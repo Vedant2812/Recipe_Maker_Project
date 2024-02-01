@@ -7,16 +7,12 @@ class RecipeCard extends HTMLElement {
     super(); // Inheret everything from HTMLElement
 
     // EXPOSE - START (All expose numbers start with A)
-    // A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
     let shadowEl = this.attachShadow({mode:'open'});
 
-    // A2. TODO - Create an <article> element - This will hold our markup once our data is set
     let recipeArticle = document.createElement('article'); // Making <article> node
 
-    // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
     let recipeStyle = document.createElement('style'); // Making <style> node
 
-    // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
     recipeStyle.textContent = 
     `
       * {
@@ -96,7 +92,6 @@ class RecipeCard extends HTMLElement {
       }
     `;
 
-    // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
     shadowEl.appendChild(recipeStyle);
     shadowEl.appendChild(recipeArticle);
   }
@@ -127,13 +122,8 @@ class RecipeCard extends HTMLElement {
     // If nothing was passed in, return
     if (!data) return;
 
-    // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
     let articleref = this.shadowRoot.querySelector('article');
 
-    // A7. TODO - Set the contents of the <article> with the <article> template given in
-    //           cardTemplate.html and the data passed in (You should only have one <article>,
-    //           do not nest an <article> inside another <article>). You should use Template
-    //           literals (tempalte strings) and element.innerHTML for this.
     const markup = 
     `
       <img src= "${data['imgSrc']}"
@@ -157,6 +147,5 @@ class RecipeCard extends HTMLElement {
   }
 }
 
-// A8. TODO - Define the Class as a customElement so that you can create
 //           'recipe-card' elements
 customElements.define('recipe-card', RecipeCard);
